@@ -3,7 +3,9 @@ import {
   PASSWORD_CHANGED,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
-  LOGIN_USER
+  LOGIN_USER,
+  PING_TOKEN_PENDING,
+  PING_TOKEN_SUCCESS
 } from '../actions/AuthActions';
 
 const INITIAL_STATE = {
@@ -37,6 +39,10 @@ export default (state = INITIAL_STATE, action) => {
        };
     case LOGIN_USER_FAIL:
       return { ...state, error: 'Authenication Failed', password: '', loading: false};
+    case PING_TOKEN_PENDING:
+      return state;
+    case PING_TOKEN_SUCCESS:
+      return [...action.payload.data];
     default:
      return state;
 

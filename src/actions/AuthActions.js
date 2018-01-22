@@ -7,6 +7,8 @@ export const PASSWORD_CHANGED = 'PASSWORD_CHANGED'
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS'
 export const LOGIN_USER_FAIL = 'LOGIN_USER_FAIL'
 export const LOGIN_USER = 'LOGIN_USER'
+export const PING_TOKEN_PENDING = 'PING_TOKEN_PENDING'
+export const PING_TOKEN_SUCCESS = 'PING_TOKEN_SUCCESS'
 
 
 
@@ -29,7 +31,7 @@ export const passwordChanged = (text) => {
 export const loginUser = ({email, password}) => {
   console.log(email, password);
   return async (dispatch) => {
-    // dispatch({ type: LOGIN_USER});
+     dispatch({ type: LOGIN_USER});
     let result = await axios.post("http://localhost:8000/login", {email:email.toLowerCase(), password});
     console.log(result);
     AsyncStorage.setItem("personalAccountantToken", result.data.token);
@@ -41,16 +43,36 @@ export const loginUser = ({email, password}) => {
      };
   };
 
+  export const pingToken = () => {
+  return async (dispatch) => {
+    dispatch({type: PING_TOKEN_PENDING})
+    let token = await AsyncStorage.getItem('personalAccountantToken')
+    let pong = await axios.post(`http://localhost:8000/ping`, {token})
+    dispatch({
+      type: PING_TOKEN_SUCCESS,
+      payload: pong
+    })
+  }
+}
 
-const loginUserFail = (dispatch) => {
-  dispatch({ type: LOGIN_USER_FAIL});
-};
 
-const loginUserSuccess = (dispatch, user) => {
-  dispatch({
-    type: LOGIN_USER_SUCCESS,
-    payload: user
-  });
 
-  Actions.main();
-};
+
+
+
+
+
+
+
+// const loginUserFail = (dispatch) => {
+//   dispatch({ type: LOGIN_USER_FAIL});
+// };
+//
+// const loginUserSuccess = (dispatch, user) => {
+//   dispatch({
+//     type: LOGIN_USER_SUCCESS,
+//     payload: user
+//   });
+//
+//   Actions.main();
+// };
