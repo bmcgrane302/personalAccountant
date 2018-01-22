@@ -19,8 +19,10 @@ export default (state = INITIAL_STATE, action) => {
 
   switch (action.type) {
     case EMAIL_CHANGED:
+    console.log('payload email', action.payload);
      return { ...state, email: action.payload };
     case PASSWORD_CHANGED:
+    console.log('payload pass', action.payload);
       return { ...state, password: action.payload };
     case LOGIN_USER:
       return { ...state, loading: true, error: '' };

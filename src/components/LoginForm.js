@@ -1,26 +1,34 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { emailChanged, passwordChanged } from '../actions/AuthActions';
+import { Actions } from 'react-native-router-flux';
+import {
+  emailChanged,
+  passwordChanged,
+  loginUser
+ } from '../actions/AuthActions';
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import { Card, CardSection, Input, Button, Spinner } from './common';
 
 class LoginForm extends Component {
   onEmailChange(text) {
-    console.log('email---',text);
-     //this.props.emailChanged(text);
+    //console.log('email---',text);
+     this.props.emailChanged(text);
   }
 
   onPasswordChange(text) {
-    console.log('pass---',text);
-      //this.props.passwordChanged(text);
+    //console.log('pass---',text);
+      this.props.passwordChanged(text);
   }
 
   onButtonPress() {
-    const { email, password } = this.props;
+    const { email, password } = this.props.authUser;
+    console.log("email", email);
+    console.log("password", password);
+    console.log("props", this.props);
+    this.props.loginUser({ email, password });
 
-     //this.props.loginUser({ email, password });
-     console.log('test');
+     //console.log('test', this.props);
   }
 
   renderButton() {
@@ -36,6 +44,7 @@ class LoginForm extends Component {
   }
 
   render() {
+    console.log('props', this.props);
     return (
       <Card>
         <CardSection>
@@ -80,13 +89,15 @@ const styles = {
 function mapStateToProps(state, props) {
   console.log('state', state);
    return {
-
+      authUser: state.authUser
    }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-
+      emailChanged: bindActionCreators(emailChanged, dispatch),
+      passwordChanged: bindActionCreators(passwordChanged, dispatch),
+      loginUser: bindActionCreators(loginUser, dispatch)
     }
   }
 

@@ -22,11 +22,14 @@ export const passwordChanged = (text) => {
     type: PASSWORD_CHANGED,
     payload: text
   };
+
 };
 
 export const loginUser = ({email, password}) => {
   return (dispatch) => {
-   dispatch({ type: LOGIN_USER });
+   dispatch({ type: LOGIN_USER,
+              payload: {email, password}
+         });
 
      };
   };
