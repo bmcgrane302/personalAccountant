@@ -25,6 +25,7 @@ export default (state = INITIAL_STATE, action) => {
     console.log('payload pass', action.payload);
       return { ...state, password: action.payload };
     case LOGIN_USER:
+      console.log("IN LOGIN USER", action.payload);
       return { ...state, loading: true, error: '' };
     case LOGIN_USER_SUCCESS:
       return { ...state,

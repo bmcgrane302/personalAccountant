@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
+import {AsyncStorage} from 'react-native';
 
 export const EMAIL_CHANGED = 'EMAIL_CHANGED'
 export const PASSWORD_CHANGED = 'PASSWORD_CHANGED'
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS'
 export const LOGIN_USER_FAIL = 'LOGIN_USER_FAIL'
-export const LOGIN_USER = 'EMAIL_CHANGED'
+export const LOGIN_USER = 'LOGIN_USER'
 
 
 
@@ -26,10 +27,16 @@ export const passwordChanged = (text) => {
 };
 
 export const loginUser = ({email, password}) => {
-  return (dispatch) => {
-   dispatch({ type: LOGIN_USER,
+  console.log(email, password);
+  return async (dispatch) => {
+    // dispatch({ type: LOGIN_USER});
+    let result = await axios.post("http://localhost:8000/login", {email:email.toLowerCase(), password});
+    console.log(result);
+    AsyncStorage.setItem("personalAccountantToken", result.data.token);
+   dispatch({ type: LOGIN_USER_SUCCESS,
               payload: {email, password}
          });
+    Actions.main();
 
      };
   };

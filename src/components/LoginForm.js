@@ -6,11 +6,13 @@ import {
   passwordChanged,
   loginUser
  } from '../actions/AuthActions';
-import { Text } from 'react-native';
+import { Text, Modal } from 'react-native';
 import { connect } from 'react-redux';
-import { Card, CardSection, Input, Button, Spinner } from './common';
+import { Card, CardSection, Input, Button, Spinner, Confirm } from './common';
 
 class LoginForm extends Component {
+  state = { showModal: false };
+
   onEmailChange(text) {
     //console.log('email---',text);
      this.props.emailChanged(text);
@@ -35,13 +37,13 @@ class LoginForm extends Component {
     if (this.props.loading) {
       return <Spinner size="large" />;
     }
-
     return (
       <Button onPress={this.onButtonPress.bind(this)}>
         Login
       </Button>
     );
   }
+   
 
   render() {
     console.log('props', this.props);
@@ -73,6 +75,9 @@ class LoginForm extends Component {
         <CardSection>
           {this.renderButton()}
         </CardSection>
+
+
+
       </Card>
     );
   }
