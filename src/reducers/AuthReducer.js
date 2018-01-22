@@ -4,7 +4,7 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
   LOGIN_USER
- } from '../actions';
+} from '../actions/AuthActions';
 
 const INITIAL_STATE = {
     email: '',

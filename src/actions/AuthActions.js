@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Actions } from 'react-native-router-flux';
 
 export const EMAIL_CHANGED = 'EMAIL_CHANGED'
@@ -5,6 +6,8 @@ export const PASSWORD_CHANGED = 'PASSWORD_CHANGED'
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS'
 export const LOGIN_USER_FAIL = 'LOGIN_USER_FAIL'
 export const LOGIN_USER = 'EMAIL_CHANGED'
+
+
 
 
 export const emailChanged = (text) => {

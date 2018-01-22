@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { emailChanged, passwordChanged } from '../actions/AuthActions';
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
-
 import { Card, CardSection, Input, Button, Spinner } from './common';
 
 class LoginForm extends Component {
@@ -76,6 +77,19 @@ const styles = {
   }
 };
 
+function mapStateToProps(state, props) {
+  console.log('state', state);
+   return {
+
+   }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+
+    }
+  }
 
 
-export default LoginForm;
+
+export default connect(mapStateToProps, mapDispatchToProps) (LoginForm);
