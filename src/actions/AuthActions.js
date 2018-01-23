@@ -11,6 +11,8 @@ export const PING_TOKEN_PENDING = 'PING_TOKEN_PENDING'
 export const PING_TOKEN_SUCCESS = 'PING_TOKEN_SUCCESS'
 export const GET_BUDGET_PENDING = 'GET_BUDGET_PENDING'
 export const GET_BUDGET_SUCCESS = 'GET_BUDGET_SUCCESS'
+export const GET_EXPENSES_PENDING = 'GET_EXPENSES_PENDING'
+export const GET_EXPENSES_SUCCESS = 'GET_EXPENSES_SUCCESS'
 
 
 
@@ -81,4 +83,16 @@ return async (dispatch) => {
     payload: income
   })
  }
+}
+
+export const getExpenses = () => {
+  return async (dispatch) => {
+    dispatch({type: GET_EXPENSES_PENDING})
+    let token = await AsyncStorage.getItem('personalAccountantToken')
+    let expenses = await axios.get(`http://localhost:8000/expenses?token=${token}`)
+    dispatch({
+      type: GET_EXPENSES_SUCCESS,
+      payload: expenses
+    })
+  }
 }
