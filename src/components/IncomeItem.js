@@ -7,19 +7,23 @@ class IncomeItem extends Component {
     return (
 
 
-        <CardSection>
-          <Text>
+      <CardSection  >
+        <CardSection >
+          <Text style={{color: 'green'}}>
             {this.props.income.income_description}
           </Text>
-          <Text>
-            {this.props.income.income_budget}
-          </Text>
-          <Text>
-            {this.props.income.income_amount_received}
-          </Text>
-
-         
         </CardSection>
+        <CardSection>
+          <Text>
+            ${this.props.income.income_budget}
+          </Text>
+        </CardSection>
+        <CardSection>
+          <Text>
+            ${this.props.income.income_amount_received}
+          </Text>
+        </CardSection>
+      </CardSection>
 
 
     )

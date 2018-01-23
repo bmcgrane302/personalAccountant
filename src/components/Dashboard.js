@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Text, View } from 'react-native';
+import { Text, View, ScrollView } from 'react-native';
 import { Card, CardSection, Input, Button } from './common';
 import { pingToken, getBudget, getExpenses } from '../actions/AuthActions';
 import IncomeItem from './IncomeItem';
@@ -39,17 +39,27 @@ class Dashboard extends Component {
     })
 
     return (
-      <Card>
+      <ScrollView>
+        <Card>
+          <CardSection>
+            <Text>INCOME</Text>
+          </CardSection>
 
-         {incomeList}
-        <CardSection>
-          <Button onPress={this.onButtonPress.bind(this)}>
-            Ping
-          </Button>
-        </CardSection>
-         {expenseList}
+           {incomeList}
+          <CardSection>
+            <Button onPress={this.onButtonPress.bind(this)}>
+              Ping
+            </Button>
+          </CardSection>
+        </Card>
 
-      </Card>
+        <Card>
+          <CardSection>
+            <Text>EXPENSES</Text>
+          </CardSection>
+           {expenseList}
+        </Card>
+      </ScrollView>
     )
   }
 }
