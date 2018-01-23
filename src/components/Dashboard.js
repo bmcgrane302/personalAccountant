@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Text, View } from 'react-native';
 import { Card, CardSection, Input, Button } from './common';
-import { pingToken } from '../actions/AuthActions';
+import { pingToken, getBudget } from '../actions/AuthActions';
 
 
 
 class Dashboard extends Component {
   componentDidMount() {
-    //this.props.getBudget();
-
+    this.props.getBudget();
+    console.log('income', this.props);
   }
 
 
@@ -38,8 +38,17 @@ class Dashboard extends Component {
 
 function mapDispatchToProps(dispatch) {
     return {
-      pingToken: bindActionCreators(pingToken, dispatch)
+      pingToken: bindActionCreators(pingToken, dispatch),
+      getBudget: bindActionCreators(getBudget, dispatch)
+
     }
   }
 
-export default connect(null, mapDispatchToProps) (Dashboard);
+  function mapStateToProps(state) {
+    return {
+      income: state.income
+    }
+  }
+
+
+export default connect(mapStateToProps, mapDispatchToProps) (Dashboard);

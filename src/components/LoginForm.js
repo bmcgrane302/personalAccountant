@@ -13,7 +13,7 @@ import { Card, CardSection, Input, Button, Spinner, Confirm } from './common';
 class LoginForm extends Component {
   state = { showModal: false };
 
-  onEmailChange(text) {
+  onEmailChange = (text) => {
     //console.log('email---',text);
      this.props.emailChanged(text);
   }
@@ -43,7 +43,7 @@ class LoginForm extends Component {
       </Button>
     );
   }
-   
+
 
   render() {
     console.log('props', this.props);
