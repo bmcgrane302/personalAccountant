@@ -19,7 +19,7 @@ export default (state = [], action) => {
     case ADD_INCOME_PENDING:
       return state;
     case ADD_INCOME_SUCCESS:
-    console.log(action.payload);
+    console.log('income adding',action.payload);
             return [...action.payload.data];
     default:
      return state;

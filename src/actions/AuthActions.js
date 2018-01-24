@@ -88,13 +88,13 @@ export const getExpenses = () => {
 }
 
 export const addIncome = (newIncome) => {
+  console.log('newIncome',newIncome);
   return async (dispatch) => {
       dispatch({type: ADD_INCOME_PENDING})
         let token = await AsyncStorage.getItem('personalAccountantToken')
-        console.log(dispatch);
-        let income = await axios.post(`http://localhost:3050/addIncome`,{'newIncome': newIncome, 'token' : token})
+        let income = await axios.post(`http://localhost:8000/addincome`,{'newIncome': newIncome, 'token' : token})
       dispatch({
-        type: ADD_POST_SUCCESS,
+        type: ADD_INCOME_SUCCESS,
         payload: income
       })
     }

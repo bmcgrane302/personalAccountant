@@ -17,14 +17,13 @@ class AddIncome extends Component {
   handleSubmit = (e) => {
      e.preventDefault()
      this.props.addIncome(this.state)
-     console.log('work', this.state);
      Actions.dash()
      this.props.closeIncomeModal()
    }
 
 
   render () {
-    console.log('add income', this.state);
+    
     return (
       <Modal
         transparent
@@ -50,7 +49,6 @@ class AddIncome extends Component {
 
             <CardSection>
               <Input
-                secureTextEntry
                 label="Budget"
                 placeholder="1000.00"
                 onChangeText={(income_budget) => this.setState({income_budget})}
