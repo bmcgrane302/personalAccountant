@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Scene, Router, Actions } from 'react-native-router-flux';
+import { addIncome} from '../actions/AuthActions';
 import { Text, View, ScrollView, TouchableOpacity, Modal, Button } from 'react-native';
 import { Card, CardSection, Input } from './common';
 
@@ -12,7 +16,10 @@ class AddIncome extends Component {
 
   handleSubmit = (e) => {
      e.preventDefault()
+     this.props.addIncome(this.state)
      console.log('work', this.state);
+     Actions.dash()
+     this.props.closeIncomeModal()
    }
 
 
@@ -94,4 +101,10 @@ const styles = {
 
 };
 
-export default AddIncome;
+function mapDispatchToProps(dispatch) {
+    return {
+      addIncome: bindActionCreators(addIncome, dispatch)
+    }
+  }
+
+export default connect(null, mapDispatchToProps) (AddIncome);

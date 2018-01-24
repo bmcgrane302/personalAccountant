@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { Card, CardSection, Input, Button } from './common';
-import { pingToken, getBudget, getExpenses } from '../actions/AuthActions';
+import { getBudget, getExpenses } from '../actions/AuthActions';
 import IncomeItem from './IncomeItem';
 import ExpenseItem from './ExpenseItem';
 import AddIncome from './AddIncome';
@@ -23,7 +23,6 @@ class Dashboard extends Component {
 
   onButtonPress = () => {
     console.log('button working');
-    this.props.pingToken();
     this.setState({ showIncomeModal: !this.state.showIncomeModal })
   }
 
@@ -52,7 +51,7 @@ class Dashboard extends Component {
       )
     })
 
-    let incomeModal = this.state.showIncomeModal? <AddIncome closeIncomeModal={this.closeIncomeModal}/>:<Text></Text>;
+    let incomeModal = this.state.showIncomeModal? <AddIncome  closeIncomeModal={this.closeIncomeModal}/>:<Text></Text>;
 
     return (
 
@@ -114,7 +113,7 @@ const styles = {
 
 function mapDispatchToProps(dispatch) {
     return {
-      pingToken: bindActionCreators(pingToken, dispatch),
+
       getBudget: bindActionCreators(getBudget, dispatch),
       getExpenses: bindActionCreators(getExpenses, dispatch),
     }

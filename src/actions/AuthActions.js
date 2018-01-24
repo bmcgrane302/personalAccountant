@@ -7,12 +7,12 @@ export const PASSWORD_CHANGED = 'PASSWORD_CHANGED'
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS'
 export const LOGIN_USER_FAIL = 'LOGIN_USER_FAIL'
 export const LOGIN_USER = 'LOGIN_USER'
-export const PING_TOKEN_PENDING = 'PING_TOKEN_PENDING'
-export const PING_TOKEN_SUCCESS = 'PING_TOKEN_SUCCESS'
 export const GET_BUDGET_PENDING = 'GET_BUDGET_PENDING'
 export const GET_BUDGET_SUCCESS = 'GET_BUDGET_SUCCESS'
 export const GET_EXPENSES_PENDING = 'GET_EXPENSES_PENDING'
 export const GET_EXPENSES_SUCCESS = 'GET_EXPENSES_SUCCESS'
+export const ADD_INCOME_PENDING = 'ADD_INCOME_PENDING'
+export const ADD_INCOME_SUCCESS = 'ADD_INCOME_SUCCESS'
 
 
 
@@ -47,17 +47,7 @@ export const loginUser = ({email, password}) => {
      };
   };
 
-  export const pingToken = () => {
-  return async (dispatch) => {
-    dispatch({type: PING_TOKEN_PENDING})
-    let token = await AsyncStorage.getItem('personalAccountantToken')
-    let pong = await axios.post(`http://localhost:8000/ping`, {token})
-    dispatch({
-      type: PING_TOKEN_SUCCESS,
-      payload: pong
-    })
-  }
-}
+
 
 // const loginUserFail = (dispatch) => {
 //   dispatch({ type: LOGIN_USER_FAIL});
@@ -95,4 +85,17 @@ export const getExpenses = () => {
       payload: expenses
     })
   }
+}
+
+export const addIncome = (newIncome) => {
+  return async (dispatch) => {
+      dispatch({type: ADD_INCOME_PENDING})
+        let token = await AsyncStorage.getItem('personalAccountantToken')
+        console.log(dispatch);
+        let income = await axios.post(`http://localhost:3050/addIncome`,{'newIncome': newIncome, 'token' : token})
+      dispatch({
+        type: ADD_POST_SUCCESS,
+        payload: income
+      })
+    }
 }
