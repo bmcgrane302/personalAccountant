@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Scene, Router, Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
@@ -6,11 +7,14 @@ import { Card, CardSection, Input, Button } from './common';
 import { pingToken, getBudget, getExpenses } from '../actions/AuthActions';
 import IncomeItem from './IncomeItem';
 import ExpenseItem from './ExpenseItem';
+import AddIncome from './AddIncome';
 
 
 
 
 class Dashboard extends Component {
+  state = { showIncomeModal: false };
+
   componentDidMount() {
     this.props.getBudget();
     this.props.getExpenses();
@@ -20,6 +24,15 @@ class Dashboard extends Component {
   onButtonPress = () => {
     console.log('button working');
     this.props.pingToken();
+    this.setState({ showIncomeModal: !this.state.showIncomeModal })
+  }
+
+  addExpenseButton = () => {
+    console.log('expense button working');
+    Actions.addExpense()
+  }
+  closeIncomeModal = () =>  {
+    this.setState({showIncomeModal: false});
   }
 
 
@@ -39,6 +52,8 @@ class Dashboard extends Component {
       )
     })
 
+    let incomeModal = this.state.showIncomeModal? <AddIncome closeIncomeModal={this.closeIncomeModal}/>:<Text></Text>;
+
     return (
 
       <ScrollView>
@@ -50,13 +65,15 @@ class Dashboard extends Component {
 
            {incomeList}
           <CardSection>
-            <TouchableOpacity onPress={this.onButtonPress} style={styles.buttonStyle}>
-               <Text style={styles.textStyle}>
+            <TouchableOpacity onPress={this.onButtonPress}             style={styles.buttonStyle}>
+              <Text style={styles.textStyle}>
                    ADD INCOME
                </Text>
             </TouchableOpacity>
           </CardSection>
         </Card>
+          {incomeModal}
+
 
         <Card>
           <CardSection>
@@ -64,7 +81,7 @@ class Dashboard extends Component {
           </CardSection>
            {expenseList}
            <CardSection>
-             <TouchableOpacity onPress={this.onButtonPress} style={styles.buttonStyle}>
+             <TouchableOpacity onPress={this.addExpenseButton} style={styles.buttonStyle}>
                 <Text style={styles.textStyle}>
                     ADD EXPENSE
                 </Text>
