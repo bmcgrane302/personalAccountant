@@ -1,30 +1,35 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { bindActionCreators } from 'redux';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { Card, CardSection, Input, Button } from './common';
 
 class IncomeItem extends Component {
+  onRowPress = () =>  {
+    console.log('its working');
+  }
+
   render () {
     return (
 
-
-      <CardSection  >
-        <CardSection >
+    <TouchableOpacity onPress={this.onRowPress.bind(this)}>
+      <CardSection style={{flex: 1, flexDirection: 'row'}}>
+        <CardSection style={{width: 130}}>
           <Text style={{color: 'green'}}>
             {this.props.income.income_description}
           </Text>
         </CardSection>
-        <CardSection>
+        <CardSection style={{width: 110}}>
           <Text>
             ${this.props.income.income_budget}
           </Text>
         </CardSection>
-        <CardSection>
+        <CardSection style={{width: 110}}>
           <Text>
             ${this.props.income.income_amount_received}
           </Text>
         </CardSection>
       </CardSection>
-
+    </TouchableOpacity>
 
     )
   }

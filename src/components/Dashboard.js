@@ -39,7 +39,9 @@ class Dashboard extends Component {
     })
 
     return (
+
       <ScrollView>
+
         <Card>
           <CardSection>
             <Text>INCOME</Text>
