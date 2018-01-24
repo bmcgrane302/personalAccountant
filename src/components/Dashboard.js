@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Text, View, ScrollView } from 'react-native';
+import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { Card, CardSection, Input, Button } from './common';
 import { pingToken, getBudget, getExpenses } from '../actions/AuthActions';
 import IncomeItem from './IncomeItem';
@@ -17,22 +17,23 @@ class Dashboard extends Component {
   }
 
 
-  onButtonPress() {
+  onButtonPress = () => {
     console.log('button working');
     this.props.pingToken();
   }
 
 
 
+
   render () {
 
-    let incomeList = this.props.income.map(income => {
+    let incomeList = this.props.income.sort((a,b)=> a.id-b.id).map(income => {
       return(
         <IncomeItem key={income.id} income={income} />
       )
     })
 
-    let expenseList = this.props.expenses.map(expense => {
+    let expenseList = this.props.expenses.sort((a,b)=> a.id-b.id).map(expense => {
       return(
         <ExpenseItem key={expense.id} expense={expense} />
       )
@@ -49,9 +50,11 @@ class Dashboard extends Component {
 
            {incomeList}
           <CardSection>
-            <Button onPress={this.onButtonPress.bind(this)}>
-              Ping
-            </Button>
+            <TouchableOpacity onPress={this.onButtonPress} style={styles.buttonStyle}>
+               <Text style={styles.textStyle}>
+                   ADD INCOME
+               </Text>
+            </TouchableOpacity>
           </CardSection>
         </Card>
 
@@ -60,9 +63,35 @@ class Dashboard extends Component {
             <Text>EXPENSES</Text>
           </CardSection>
            {expenseList}
+           <CardSection>
+             <TouchableOpacity onPress={this.onButtonPress} style={styles.buttonStyle}>
+                <Text style={styles.textStyle}>
+                    ADD EXPENSE
+                </Text>
+             </TouchableOpacity>
+           </CardSection>
         </Card>
       </ScrollView>
     )
+  }
+}
+
+const styles = {
+  textStyle: {
+    alignSelf: 'center',
+    color: '#007aff',
+    fontSize: 10,
+    fontWeight: '600',
+    paddingTop: 10,
+    paddingBottom: 10
+
+  },
+  buttonStyle: {
+
+    alignSelf: 'center',
+    backgroundColor: '#fff',
+    marginLeft: 4,
+    marginRight: 4
   }
 }
 
