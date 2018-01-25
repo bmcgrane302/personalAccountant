@@ -70,7 +70,7 @@ class Dashboard extends Component {
 
         <Card>
           <CardSection>
-            <Text>INCOME</Text>
+            <Text style={{color: 'green'}}>INCOME</Text>
           </CardSection>
 
            {incomeList}
@@ -87,7 +87,7 @@ class Dashboard extends Component {
 
         <Card>
           <CardSection>
-            <Text>EXPENSES</Text>
+            <Text style={{color: 'red'}}>EXPENSES</Text>
           </CardSection>
            {expenseList}
            <CardSection>

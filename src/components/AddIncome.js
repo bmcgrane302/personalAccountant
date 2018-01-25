@@ -15,9 +15,7 @@ class AddIncome extends Component {
   }
 
   handleSubmit = () => {
-
      this.props.addIncome(this.state)
-
      this.props.closeIncomeModal()
    }
 
@@ -60,7 +58,7 @@ class AddIncome extends Component {
             <CardSection>
               <CardSection>
                 <TouchableOpacity onPress={this.handleSubmit}>
-                  <Text>
+                  <Text style={{color: '#007aff'}}>
                        ADD
                    </Text>
                 </TouchableOpacity>
@@ -85,8 +83,9 @@ const styles = {
     justifyContent: 'center'
   },
   textStyle: {
+    color: 'green',
     flex: 1,
-    fontSize: 15,
+    fontSize: 20,
     textAlign: 'center',
     lineHeight: 40
   },

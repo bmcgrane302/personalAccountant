@@ -15,7 +15,7 @@ class AddExpense extends Component {
   }
 
   handleSubmit = () => {
-      
+
      this.props.addExpense(this.state)
 
      this.props.closeExpenseModal()
@@ -60,7 +60,7 @@ class AddExpense extends Component {
             <CardSection>
               <CardSection>
                 <TouchableOpacity onPress={this.handleSubmit}>
-                  <Text>
+                  <Text style={{color: '#007aff'}}>
                        ADD
                    </Text>
                 </TouchableOpacity>
@@ -85,8 +85,9 @@ const styles = {
     justifyContent: 'center'
   },
   textStyle: {
+    color: 'red',
     flex: 1,
-    fontSize: 15,
+    fontSize: 20,
     textAlign: 'center',
     lineHeight: 40
   },

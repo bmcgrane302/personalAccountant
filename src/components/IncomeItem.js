@@ -5,16 +5,15 @@ import { Card, CardSection, Input, Button } from './common';
 
 class IncomeItem extends Component {
   onRowPress = () =>  {
-    console.log('its working on income');
+    console.log('its working on income', this.props.income.id);
   }
 
   render () {
     return (
-
-    <TouchableOpacity onPress={this.onRowPress.bind(this)}>
-      <CardSection style={{flex: 1, flexDirection: 'row'}}>
+   <View>
+    <CardSection style={{flex: 1, flexDirection: 'row'}}>
         <CardSection style={{width: 150}}>
-          <Text style={{color: 'green'}}>
+          <Text >
             {this.props.income.income_description.toUpperCase()}
           </Text>
         </CardSection>
@@ -23,14 +22,15 @@ class IncomeItem extends Component {
             ${this.props.income.income_budget}
           </Text>
         </CardSection>
+      <TouchableOpacity onPress={this.onRowPress.bind(this)}>
         <CardSection style={{width: 100}}>
-          <Text>
+          <Text style={{color: 'green'}}>
             ${this.props.income.income_amount_received}
           </Text>
         </CardSection>
-      </CardSection>
-    </TouchableOpacity>
-
+      </TouchableOpacity>
+    </CardSection>
+   </View>
     )
   }
 }
