@@ -4,6 +4,7 @@ import LoginForm from './components/LoginForm';
 import Dashboard from './components/Dashboard';
 import AddExpense from './components/AddExpense';
 import UpdateExpenseItem from './components/UpdateExpenseItem';
+import UpdateIncomeItem from './components/UpdateIncomeItem';
 
 
 const RouterComponent = () => {
@@ -18,6 +19,7 @@ const RouterComponent = () => {
         <Scene key='main'>
           <Scene key='dash' component={Dashboard} title='BUDGET'  />
           <Scene key='updateExpense' component={UpdateExpenseItem} title='UPDATE EXPENSE'  />
+          <Scene key='updateIncome' component={UpdateIncomeItem} title='UPDATE INCOME'  />
         </Scene>
       </Scene>
 

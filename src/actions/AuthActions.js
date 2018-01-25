@@ -17,6 +17,8 @@ export const ADD_EXPENSE_PENDING = 'ADD_EXPENSE_PENDING'
 export const ADD_EXPENSE_SUCCESS = 'ADD_EXPENSE_SUCCESSS'
 export const UPDATE_EXPENSE_PENDING = 'UPDATE_EXPENSE_PENDING'
 export const UPDATE_EXPENSE_SUCCESS = 'UPDATE_EXPENSE_SUCCESS'
+export const UPDATE_INCOME_PENDING = 'UPDATE_INCOME_PENDING'
+export const UPDATE_INCOME_SUCCESS = 'UPDATE_INCOME_SUCCESS'
 
 
 
@@ -127,6 +129,20 @@ export const updateExpense = (updateExpense, id) => {
         type: UPDATE_EXPENSE_SUCCESS,
         payload: expense
       })
-      console.log('payload', payload);
+       
+    }
+}
+
+export const updateIncome = (updateIncome, id) => {
+  console.log('updateIncome',updateIncome, id);
+  return async (dispatch) => {
+      dispatch({type: UPDATE_INCOME_PENDING})
+        let token = await AsyncStorage.getItem('personalAccountantToken')
+        let income = await axios.patch(`http://localhost:8000/updateincome/${id}`,{'updateIncome': updateIncome, 'token' : token, id: id})
+      dispatch({
+        type: UPDATE_INCOME_SUCCESS,
+        payload: income
+      })
+
     }
 }

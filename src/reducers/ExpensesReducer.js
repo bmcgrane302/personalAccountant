@@ -20,8 +20,8 @@ export default (state = [], action) => {
     case ADD_EXPENSE_PENDING:
       return state;
     case ADD_EXPENSE_SUCCESS:
-    //console.log('expense adding',action.payload);
-      return [...action.payload.data];
+      console.log('expense adding',action.payload);
+      return [...state, ...action.payload.data];
     case UPDATE_EXPENSE_PENDING:
       return state;
     case UPDATE_EXPENSE_SUCCESS:
