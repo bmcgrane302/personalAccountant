@@ -12,6 +12,7 @@ class UpdateExpenseItem extends Component {
 
   handleSubmit = () => {
     let total = parseInt(this.props.current) + parseInt(this.state.expense_amount_paid);
+
     this.props.updateExpense(total, this.props.id )
     //console.log('total  is --------', total);
    }

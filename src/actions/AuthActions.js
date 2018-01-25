@@ -122,10 +122,11 @@ export const updateExpense = (updateExpense, id) => {
   return async (dispatch) => {
       dispatch({type: UPDATE_EXPENSE_PENDING})
         let token = await AsyncStorage.getItem('personalAccountantToken')
-        let expense = await axios.patch(`http://localhost:8000/udateexpense/${id}`,{'updateExpense': updateExpense, 'token' : token})
+        let expense = await axios.patch(`http://localhost:8000/updateexpense/${id}`,{'updateExpense': updateExpense, 'token' : token, id: id})
       dispatch({
         type: UPDATE_EXPENSE_SUCCESS,
         payload: expense
       })
+      console.log('payload', payload);
     }
 }
