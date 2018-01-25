@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Text, View, ScrollView, TouchableOpacity, Modal, Button } from 'react-native';
 import { Card, CardSection, Input } from './common';
 
@@ -9,11 +10,13 @@ class UpdateExpenseItem extends Component {
 
   handleSubmit = () => {
     console.log('update button working');
+    console.log('expense is is', this.props.id);
    }
 
 
   render () {
     console.log('updated expense state', this.state);
+    console.log('props', this.props);
     return (
 
       <View  style={styles.containerStyle}>
@@ -69,5 +72,11 @@ const styles = {
 
 };
 
+function mapStateToProps(state) {
+  return {
+    expenses: state.expenses
+  }
+}
 
-export default UpdateExpenseItem;
+
+export default connect(mapStateToProps, null) (UpdateExpenseItem);
