@@ -22,7 +22,7 @@ export default (state = [], action) => {
       return state;
     case ADD_INCOME_SUCCESS:
     console.log('income adding',action.payload);
-            return [...action.payload.data];
+            return [...state, ...action.payload.data];
     case UPDATE_INCOME_PENDING:
       return state;
     case UPDATE_INCOME_SUCCESS:
