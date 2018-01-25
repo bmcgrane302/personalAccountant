@@ -58,14 +58,14 @@ class AddIncome extends Component {
             <CardSection>
               <CardSection>
                 <TouchableOpacity onPress={this.handleSubmit}>
-                  <Text style={{color: '#007aff'}}>
+                  <Text style={{color: '#007aff', fontSize:10}}>
                        ADD
                    </Text>
                 </TouchableOpacity>
               </CardSection>
               <CardSection>
                 <TouchableOpacity onPress={this.props.closeIncomeModal}>
-                  <Text>
+                  <Text style={{ fontSize:10}}>
                        CLOSE
                    </Text>
                 </TouchableOpacity>

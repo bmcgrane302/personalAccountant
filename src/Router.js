@@ -17,8 +17,7 @@ const RouterComponent = () => {
 
         <Scene key='main'>
           <Scene key='dash' component={Dashboard} title='BUDGET'  />
-
-          <Scene key='updateExpense' component={UpdateExpenseItem} title='EXPENSE'  />
+          <Scene key='updateExpense' component={UpdateExpenseItem} title='UPDATE EXPENSE'  />
         </Scene>
       </Scene>
 

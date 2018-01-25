@@ -40,6 +40,7 @@ class AddExpense extends Component {
 
             <CardSection>
               <Input
+
                 label="Description"
                 placeholder="bill"
                 onChangeText={(expense_description) => this.setState({expense_description})}
@@ -47,7 +48,7 @@ class AddExpense extends Component {
               />
             </CardSection>
 
-            <CardSection>
+            <CardSection >
               <Input
                 label="Budget"
                 placeholder="1000.00"
@@ -60,14 +61,14 @@ class AddExpense extends Component {
             <CardSection>
               <CardSection>
                 <TouchableOpacity onPress={this.handleSubmit}>
-                  <Text style={{color: '#007aff'}}>
+                  <Text style={{color: '#007aff',  fontSize:10}}>
                        ADD
                    </Text>
                 </TouchableOpacity>
               </CardSection>
               <CardSection>
                 <TouchableOpacity onPress={this.props.closeExpenseModal}>
-                  <Text>
+                  <Text style={{fontSize:10}}>
                        CLOSE
                    </Text>
                 </TouchableOpacity>
