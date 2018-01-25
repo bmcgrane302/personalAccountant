@@ -15,6 +15,8 @@ export const ADD_INCOME_PENDING = 'ADD_INCOME_PENDING'
 export const ADD_INCOME_SUCCESS = 'ADD_INCOME_SUCCESS'
 export const ADD_EXPENSE_PENDING = 'ADD_EXPENSE_PENDING'
 export const ADD_EXPENSE_SUCCESS = 'ADD_EXPENSE_SUCCESSS'
+export const UPDATE_EXPENSE_PENDING = 'UPDATE_EXPENSE_PENDING'
+export const UPDATE_EXPENSE_SUCCESS = 'UPDATE_EXPENSE_SUCCESS'
 
 
 
@@ -103,13 +105,26 @@ export const addIncome = (newIncome) => {
 }
 
 export const addExpense = (newExpense) => {
-  console.log('newExpense',newExpense);
+  //console.log('newExpense',newExpense);
   return async (dispatch) => {
       dispatch({type: ADD_EXPENSE_PENDING})
         let token = await AsyncStorage.getItem('personalAccountantToken')
         let expense = await axios.post(`http://localhost:8000/addexpense`,{'newExpense': newExpense, 'token' : token})
       dispatch({
         type: ADD_EXPENSE_SUCCESS,
+        payload: expense
+      })
+    }
+}
+
+export const updateExpense = (updateExpense, id) => {
+  console.log('updateExpense',updateExpense, id);
+  return async (dispatch) => {
+      dispatch({type: UPDATE_EXPENSE_PENDING})
+        let token = await AsyncStorage.getItem('personalAccountantToken')
+        let expense = await axios.patch(`http://localhost:8000/udateexpense/${id}`,{'updateExpense': updateExpense, 'token' : token})
+      dispatch({
+        type: UPDATE_EXPENSE_SUCCESS,
         payload: expense
       })
     }

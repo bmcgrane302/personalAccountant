@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { updateExpense} from '../actions/AuthActions';
 import { Text, View, ScrollView, TouchableOpacity, Modal, Button } from 'react-native';
 import { Card, CardSection, Input } from './common';
 
 class UpdateExpenseItem extends Component {
   state = {
-    expense_amount_paid: '',
+    expense_amount_paid: 0,
   }
 
   handleSubmit = () => {
-    console.log('update button working');
-    console.log('expense is is', this.props.id);
+    let total = parseInt(this.props.current) + parseInt(this.state.expense_amount_paid);
+    this.props.updateExpense(total, this.props.id )
+    //console.log('total  is --------', total);
    }
 
 
   render () {
-    console.log('updated expense state', this.state);
-    console.log('props', this.props);
+
     return (
 
       <View  style={styles.containerStyle}>
@@ -78,5 +80,12 @@ function mapStateToProps(state) {
   }
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
 
-export default connect(mapStateToProps, null) (UpdateExpenseItem);
+      updateExpense: bindActionCreators(updateExpense, dispatch),
+    }
+  }
+
+
+export default connect(mapStateToProps, mapDispatchToProps) (UpdateExpenseItem);

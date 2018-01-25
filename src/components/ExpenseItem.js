@@ -5,9 +5,12 @@ import { Card, CardSection, Input, Button } from './common';
 
 class ExpenseItem extends Component {
   onRowPress = () =>  {
-    Actions.updateExpense({id: this.props.expense.id})
+    Actions.updateExpense({
+      id: this.props.expense.id,
+      current: this.props.expense.expense_amount_paid
+    })
 
-    console.log('expense id is this', this.props.expense.id);
+    //console.log('expense id is this', this.props.expense.expense_amount_paid);
   }
 
   render () {
