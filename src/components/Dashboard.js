@@ -8,12 +8,16 @@ import { getBudget, getExpenses } from '../actions/AuthActions';
 import IncomeItem from './IncomeItem';
 import ExpenseItem from './ExpenseItem';
 import AddIncome from './AddIncome';
+import AddExpense from './AddExpense';
 
 
 
 
 class Dashboard extends Component {
-  state = { showIncomeModal: false };
+  state = {
+    showIncomeModal: false,
+    showExpenseModal: false
+   };
 
   componentDidMount() {
     this.props.getBudget();
@@ -21,17 +25,22 @@ class Dashboard extends Component {
   }
 
 
-  onButtonPress = () => {
+  addIncomeButton = () => {
     console.log('button working');
     this.setState({ showIncomeModal: !this.state.showIncomeModal })
   }
 
   addExpenseButton = () => {
     console.log('expense button working');
-    Actions.addExpense()
+    this.setState({ showExpenseModal: !this.state.showExpenseModal })
+
   }
   closeIncomeModal = () =>  {
     this.setState({showIncomeModal: false});
+  }
+
+  closeExpenseModal = () =>  {
+    this.setState({showExpenseModal: false});
   }
 
 
@@ -53,6 +62,8 @@ class Dashboard extends Component {
 
     let incomeModal = this.state.showIncomeModal? <AddIncome  closeIncomeModal={this.closeIncomeModal}/>:<Text></Text>;
 
+    let expenseModal = this.state.showExpenseModal? <AddExpense  closeExpenseModal={this.closeExpenseModal}/>:<Text></Text>;
+
     return (
 
       <ScrollView>
@@ -64,7 +75,7 @@ class Dashboard extends Component {
 
            {incomeList}
           <CardSection>
-            <TouchableOpacity onPress={this.onButtonPress}             style={styles.buttonStyle}>
+            <TouchableOpacity onPress={this.addIncomeButton}             style={styles.buttonStyle}>
               <Text style={styles.textStyle}>
                    ADD INCOME
                </Text>
@@ -87,6 +98,7 @@ class Dashboard extends Component {
              </TouchableOpacity>
            </CardSection>
         </Card>
+       {expenseModal}
       </ScrollView>
     )
   }

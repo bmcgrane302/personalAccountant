@@ -13,6 +13,8 @@ export const GET_EXPENSES_PENDING = 'GET_EXPENSES_PENDING'
 export const GET_EXPENSES_SUCCESS = 'GET_EXPENSES_SUCCESS'
 export const ADD_INCOME_PENDING = 'ADD_INCOME_PENDING'
 export const ADD_INCOME_SUCCESS = 'ADD_INCOME_SUCCESS'
+export const ADD_EXPENSE_PENDING = 'ADD_EXPENSE_PENDING'
+export const ADD_EXPENSE_SUCCESS = 'ADD_EXPENSE_SUCCESSS'
 
 
 
@@ -96,6 +98,19 @@ export const addIncome = (newIncome) => {
       dispatch({
         type: ADD_INCOME_SUCCESS,
         payload: income
+      })
+    }
+}
+
+export const addExpense = (newExpense) => {
+  console.log('newExpense',newExpense);
+  return async (dispatch) => {
+      dispatch({type: ADD_EXPENSE_PENDING})
+        let token = await AsyncStorage.getItem('personalAccountantToken')
+        let expense = await axios.post(`http://localhost:8000/addexpense`,{'newExpense': newExpense, 'token' : token})
+      dispatch({
+        type: ADD_EXPENSE_SUCCESS,
+        payload: expense
       })
     }
 }

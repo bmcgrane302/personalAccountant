@@ -14,16 +14,16 @@ class AddIncome extends Component {
     income_budget: ''
   }
 
-  handleSubmit = (e) => {
-     e.preventDefault()
+  handleSubmit = () => {
+
      this.props.addIncome(this.state)
-     Actions.dash()
+
      this.props.closeIncomeModal()
    }
 
 
   render () {
-    
+
     return (
       <Modal
         transparent
