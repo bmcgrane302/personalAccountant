@@ -9,31 +9,58 @@ import { Card, CardSection, Input } from './common';
 class UpdateExpenseItem extends Component {
   state = {
     expense_amount_paid: 0,
+    currentBudgetPer: 0,
+    currentSpent: this.props.current
   }
+
 
   handleSubmit = () => {
     let total = Number(this.props.current) + Number(this.state.expense_amount_paid);
 
+    //this.setState({ currentBudgetPer: percentOfBudget })
+    this.setState({ currentSpent: total.toFixed(2) })
     this.props.updateExpense(total, this.props.id )
+
     //console.log('total  is --------', total);
    }
 
 
   render () {
+    let percentOfBudget = (Number(this.state.currentSpent)/Number(this.props.budget)).toFixed(2);
+    console.log('percentOfBudget', percentOfBudget);
+    console.log('expense state', this.state);
 
     return (
 
       <View  style={styles.containerStyle}>
+
+        <Card>
+          <CardSection style={{ justifyContent: 'center'}}>
+            <CardSection >
+               <Text style={{ fontSize: 20, color: 'red'}}>{this.props.description.toUpperCase()}</Text>
+            </CardSection>
+          </CardSection>
+        </Card>
+
         <Card >
          <View style={{ backgroundColor: '#fff', padding: 20, }}>
           <ProgressCircle
                 style={ { height: 200 } }
-                progress={ 0.7 }
+                progress={ Number(percentOfBudget) }
                 progressColor={ 'rgb(81, 173, 2)' }
                 startAngle={ -Math.PI * 0.8 }
                 endAngle={ Math.PI * 0.8 }
             />
          </View>
+         <CardSection style={{ justifyContent: 'center'}}>
+           <CardSection >
+              <Text style={{ fontSize: 14}}>Budget: {this.props.budget}</Text>
+           </CardSection>
+           <CardSection >
+              <Text style={{ fontSize: 14}}>Current: </Text>
+              <Text style={{ fontSize: 14, color: 'red'}}>{this.state.currentSpent}</Text>
+           </CardSection>
+         </CardSection>
         </Card>
 
         <Card>
