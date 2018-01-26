@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { ProgressCircle } from 'react-native-svg-charts'
 import { bindActionCreators } from 'redux';
 import { updateExpense} from '../actions/AuthActions';
 import { Text, View, ScrollView, TouchableOpacity, Modal, Button } from 'react-native';
@@ -23,13 +24,17 @@ class UpdateExpenseItem extends Component {
     return (
 
       <View  style={styles.containerStyle}>
-       <Card>
-        <CardSection>
-          <Text style={{height: 300}}>
-             CHART
-          </Text>
-        </CardSection>
-       </Card>
+        <Card >
+         <View style={{ backgroundColor: '#fff', padding: 20, }}>
+          <ProgressCircle
+                style={ { height: 200 } }
+                progress={ 0.7 }
+                progressColor={ 'rgb(81, 173, 2)' }
+                startAngle={ -Math.PI * 0.8 }
+                endAngle={ Math.PI * 0.8 }
+            />
+         </View>
+        </Card>
 
         <Card>
           <CardSection>
