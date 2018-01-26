@@ -22,11 +22,12 @@ export default (state = [], action) => {
       return state;
     case ADD_INCOME_SUCCESS:
     console.log('income adding',action.payload);
-            return [...state, ...action.payload.data];
+      return [...state, ...action.payload.data];
     case UPDATE_INCOME_PENDING:
       return state;
     case UPDATE_INCOME_SUCCESS:
-    console.log('income updating',action.payload);
+      let newState = state.filter((item,i)=> state.users_id === action.payload.data[i].user_id);
+      console.log('testing income update', newState);
       return [...action.payload.data];
     default:
      return state;

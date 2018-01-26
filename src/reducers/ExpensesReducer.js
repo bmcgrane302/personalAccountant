@@ -25,7 +25,7 @@ export default (state = [], action) => {
     case UPDATE_EXPENSE_PENDING:
       return state;
     case UPDATE_EXPENSE_SUCCESS:
-    console.log('expense updating',action.payload);
+    //console.log('expense updating',action.payload);
       return [...action.payload.data];
     default:
      return state;
