@@ -8,7 +8,9 @@ class IncomeItem extends Component {
   onRowPress = () =>  {
     Actions.updateIncome({
       id: this.props.income.id,
-      current: this.props.income.income_amount_received
+      current: this.props.income.income_amount_received,
+      description: this.props.income.income_description,
+      budget: this.props.income.income_budget,
     })
     console.log('its working on income', this.props.income.income_amount_received);
   }

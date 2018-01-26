@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { ProgressCircle } from 'react-native-svg-charts'
 import { bindActionCreators } from 'redux';
 import { updateIncome, deleteIncome} from '../actions/AuthActions';
 import { Text, View, ScrollView, TouchableOpacity, Modal, Button } from 'react-native';
@@ -8,11 +9,14 @@ import { Card, CardSection, Input } from './common';
 class UpdateIncomeItem extends Component {
   state = {
     income_amount_received: 0,
+    currentBudgetPer: 0,
+    currentSpent: this.props.current
   }
 
   handleSubmit = () => {
     let total = Number(this.props.current) + Number(this.state.income_amount_received);
-    console.log('update income', total, this.state.income_amount_received);
+
+    this.setState({ currentSpent: total.toFixed(2) })
     this.props.updateIncome(total, this.props.id )
    }
 
@@ -22,16 +26,42 @@ class UpdateIncomeItem extends Component {
     }
 
   render () {
+    let percentOfBudget = (Number(this.state.currentSpent)/Number(this.props.budget)).toFixed(2);
+    console.log('percentOfBudget', percentOfBudget);
+    console.log('income state', this.state);
 
     return (
       <View  style={styles.containerStyle}>
-       <Card>
-        <CardSection>
-          <Text style={{height: 300}}>
-             CHART
-          </Text>
-        </CardSection>
-       </Card>
+
+        <Card>
+          <CardSection style={{ justifyContent: 'center'}}>
+            <CardSection >
+               <Text style={{ fontSize: 20, color: '#007aff'}}>{this.props.description.toUpperCase()}</Text>
+            </CardSection>
+          </CardSection>
+        </Card>
+
+        <Card >
+         <View style={{ backgroundColor: '#fff', padding: 20, }}>
+          <ProgressCircle
+                style={ { height: 200 } }
+                progress={ Number(percentOfBudget) }
+                progressColor={ 'rgb(81, 173, 2)' }
+                startAngle={ -Math.PI * 0.8 }
+                endAngle={ Math.PI * 0.8 }
+            />
+         </View>
+         <CardSection style={{ justifyContent: 'center'}}>
+           <CardSection >
+              <Text style={{ fontSize: 14}}>Budget: {this.props.budget}</Text>
+           </CardSection>
+           <CardSection >
+              <Text style={{ fontSize: 14}}>Current: </Text>
+              <Text style={{ fontSize: 14, color: 'red'}}>{this.state.currentSpent}</Text>
+           </CardSection>
+         </CardSection>
+        </Card>
+
 
         <Card>
           <CardSection>

@@ -17,18 +17,15 @@ class UpdateExpenseItem extends Component {
   handleSubmit = () => {
     let total = Number(this.props.current) + Number(this.state.expense_amount_paid);
 
-    //this.setState({ currentBudgetPer: percentOfBudget })
     this.setState({ currentSpent: total.toFixed(2) })
     this.props.updateExpense(total, this.props.id )
 
-    //console.log('total  is --------', total);
    }
 
 
   render () {
     let percentOfBudget = (Number(this.state.currentSpent)/Number(this.props.budget)).toFixed(2);
-    console.log('percentOfBudget', percentOfBudget);
-    console.log('expense state', this.state);
+    
 
     return (
 
