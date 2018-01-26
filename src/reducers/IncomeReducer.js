@@ -19,7 +19,7 @@ export default (state = [], action) => {
     case GET_BUDGET_PENDING:
       return state;
     case GET_BUDGET_SUCCESS:
-        return [...action.payload.data];
+      return [...action.payload.data];
     case ADD_INCOME_PENDING:
       return state;
     case ADD_INCOME_SUCCESS:
@@ -32,8 +32,7 @@ export default (state = [], action) => {
     case DELETE_INCOME_PENDING:
       return state;
     case DELETE_INCOME_SUCCESS:
-       console.log('income delteteeeee', action,payload);
-          return [...action.payload.data];
+      return [...action.payload.data];
     default:
      return state;
 

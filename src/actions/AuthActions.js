@@ -136,7 +136,7 @@ export const updateExpense = (updateExpense, id) => {
 }
 
 export const updateIncome = (updateIncome, id) => {
-  console.log('updateIncome',updateIncome, id);
+  //console.log('updateIncome',updateIncome, id);
   return async (dispatch) => {
       dispatch({type: UPDATE_INCOME_PENDING})
         let token = await AsyncStorage.getItem('personalAccountantToken')
@@ -154,10 +154,12 @@ export const deleteIncome = (id) => {
   return async (dispatch) => {
       dispatch({type: DELETE_INCOME_PENDING})
         let token = await AsyncStorage.getItem('personalAccountantToken')
-        let deleteIncome = await axios.delete(`http://localhost:8000/deleteincome/${id}`,{ 'token': token})
+        console.log(token);
+
+        let resultingIncome = await axios.delete(`http://localhost:8000/deleteincome/${id}?token=${token}`)
       dispatch({
         type: DELETE_INCOME_SUCCESS,
-        payload: deleteIncome
+        payload: resultingIncome
       })
 
     }
