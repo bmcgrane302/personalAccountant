@@ -11,7 +11,7 @@ class UpdateIncomeItem extends Component {
   }
 
   handleSubmit = () => {
-    let total = parseInt(this.props.current) + parseInt(this.state.income_amount_received);
+    let total = Number(this.props.current) + Number(this.state.income_amount_received);
     console.log('update income', total, this.state.income_amount_received);
     this.props.updateIncome(total, this.props.id )
    }
