@@ -4,7 +4,9 @@ import {
   ADD_INCOME_PENDING,
   ADD_INCOME_SUCCESS,
   UPDATE_INCOME_PENDING,
-  UPDATE_INCOME_SUCCESS
+  UPDATE_INCOME_SUCCESS,
+  DELETE_INCOME_PENDING,
+  DELETE_INCOME_SUCCESS
 
 } from '../actions/AuthActions';
 
@@ -21,14 +23,17 @@ export default (state = [], action) => {
     case ADD_INCOME_PENDING:
       return state;
     case ADD_INCOME_SUCCESS:
-    console.log('income adding',action.payload);
       return [...state, ...action.payload.data];
     case UPDATE_INCOME_PENDING:
       return state;
     case UPDATE_INCOME_SUCCESS:
       let newState = state.filter((item,i)=> state.users_id === action.payload.data[i].user_id);
-      console.log('testing income update', newState);
       return [...action.payload.data];
+    case DELETE_INCOME_PENDING:
+      return state;
+    case DELETE_INCOME_SUCCESS:
+       console.log('income delteteeeee', action,payload);
+          return [...action.payload.data];
     default:
      return state;
 

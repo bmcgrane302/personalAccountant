@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateIncome} from '../actions/AuthActions';
+import { updateIncome, deleteIncome} from '../actions/AuthActions';
 import { Text, View, ScrollView, TouchableOpacity, Modal, Button } from 'react-native';
 import { Card, CardSection, Input } from './common';
 
@@ -14,8 +14,12 @@ class UpdateIncomeItem extends Component {
     let total = parseInt(this.props.current) + parseInt(this.state.income_amount_received);
 
     this.props.updateIncome(total, this.props.id )
-    console.log('total  is --------', total);
    }
+
+   handleDelete = () => {
+     console.log('delete', this.props.id);
+     this.props.deleteIncome(this.props.id)
+    }
 
   render () {
 
@@ -43,6 +47,13 @@ class UpdateIncomeItem extends Component {
               <TouchableOpacity onPress={this.handleSubmit}>
                 <Text style={{color: '#007aff',  fontSize:10}}>
                      ADD
+                 </Text>
+              </TouchableOpacity>
+            </CardSection>
+            <CardSection>
+              <TouchableOpacity onPress={this.handleDelete}>
+                <Text style={{fontSize:10}}>
+                     DELETE
                  </Text>
               </TouchableOpacity>
             </CardSection>
@@ -83,6 +94,7 @@ function mapDispatchToProps(dispatch) {
     return {
 
       updateIncome: bindActionCreators(updateIncome, dispatch),
+      deleteIncome: bindActionCreators(deleteIncome, dispatch),
     }
   }
 
