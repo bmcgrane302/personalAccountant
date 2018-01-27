@@ -27,9 +27,7 @@ class UpdateIncomeItem extends Component {
 
   render () {
     let percentOfBudget = (Number(this.state.currentSpent)/Number(this.props.budget)).toFixed(2);
-    console.log('percentOfBudget', percentOfBudget);
-    console.log('income state', this.state);
-
+    
     return (
       <View  style={styles.containerStyle}>
 

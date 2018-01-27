@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
+import { ProgressCircle } from 'react-native-svg-charts'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
@@ -23,7 +24,6 @@ class Dashboard extends Component {
     this.props.getBudget();
     this.props.getExpenses();
   }
-
 
   addIncomeButton = () => {
     console.log('button working');
@@ -67,6 +67,32 @@ class Dashboard extends Component {
     return (
 
       <ScrollView>
+
+        <Card >
+         <View style={{ backgroundColor: '#fff', padding: 20, }}>
+          <ProgressCircle
+
+                style={ { height: 200 } }
+                progress={ 0.7 }
+                progressColor={ 'rgb(81, 173, 2)' }
+                startAngle={ -Math.PI * 0.8 }
+                endAngle={ Math.PI * 0.8 }
+            />
+         </View>
+         
+         <CardSection style={{ justifyContent: 'center'}}>
+           <CardSection >
+              <Text style={{ fontSize: 14}}>Budget: </Text>
+           </CardSection>
+           <CardSection >
+              <Text style={{ fontSize: 14}}>Current: </Text>
+              <Text style={{ fontSize: 14, color: 'red'}}></Text>
+           </CardSection>
+         </CardSection>
+        </Card>
+
+
+
 
         <Card>
           <CardSection>
