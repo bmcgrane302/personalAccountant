@@ -26,7 +26,7 @@ class UpdateExpenseItem extends Component {
   render () {
     let percentOfBudget = (Number(this.state.currentSpent)/Number(this.props.budget)).toFixed(2);
     let percentDisplay = Math.round((percentOfBudget*100));
-    let displayColor = (percentOfBudget < .7) ? "green" : (percentOfBudget < 1) ? 'yellow': 'red';
+    let displayColor = (percentOfBudget < .7) ? "rgb(81, 173, 2)" : (percentOfBudget < 1) ? 'yellow': 'red';
     console.log('color', displayColor );
 
     return (

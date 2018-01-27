@@ -27,7 +27,10 @@ class UpdateIncomeItem extends Component {
 
   render () {
     let percentOfBudget = (Number(this.state.currentSpent)/Number(this.props.budget)).toFixed(2);
-    
+    let percentDisplay = Math.round((percentOfBudget*100));
+    let displayColor = (percentOfBudget < .7) ? "red" : (percentOfBudget < 1) ? 'yellow': 'rgb(81, 173, 2)';
+    console.log('color', displayColor );
+
     return (
       <View  style={styles.containerStyle}>
 
@@ -44,10 +47,13 @@ class UpdateIncomeItem extends Component {
           <ProgressCircle
                 style={ { height: 200 } }
                 progress={ Number(percentOfBudget) }
-                progressColor={ 'rgb(81, 173, 2)' }
+                progressColor={ displayColor }
                 startAngle={ -Math.PI * 0.8 }
                 endAngle={ Math.PI * 0.8 }
             />
+            <View style={{ alignSelf: 'center', zIndex: 10 }}>
+              <Text style={{ fontSize: 30}}>{percentDisplay}%</Text>
+            </View>
          </View>
          <CardSection style={{ justifyContent: 'center'}}>
            <CardSection >
@@ -55,7 +61,7 @@ class UpdateIncomeItem extends Component {
            </CardSection>
            <CardSection >
               <Text style={{ fontSize: 14}}>Current: </Text>
-              <Text style={{ fontSize: 14, color: 'red'}}>{this.state.currentSpent}</Text>
+              <Text style={{ fontSize: 14, color: 'rgb(81, 173, 2)'}}>{this.state.currentSpent}</Text>
            </CardSection>
          </CardSection>
         </Card>
