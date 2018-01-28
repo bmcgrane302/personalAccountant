@@ -64,25 +64,27 @@ class Dashboard extends Component {
 
     let expenseModal = this.state.showExpenseModal? <AddExpense  closeExpenseModal={this.closeExpenseModal}/>:<Text></Text>;
 
+    let budgetTotal = this.props.expenses.reduce((acc,item)=> acc + Number(item.expense_budget),0)
+    console.log('budgetTotal', budgetTotal);
 
-
+    let colorList = ['#00ff01', '#0c2ff4', '#020911', '#e03b2c', '#ff00fa', '#19eadc', '#ed8312', '#10f2b6', '#10f2b6']
 
     let randomColor = () => ('#' + (Math.random() * 0xFFFFFF << 0).toString(16) + '000000').slice(0, 7)
 
     let createPieChartData = (arr) => {
         let newArray=[];
         for(let i = 0; i < arr.length; i++ ){
-          newArray.push(6000/parseInt(arr[i].expense_budget));
+          newArray.push(Math.round((parseInt(arr[i].expense_budget)/budgetTotal)*100));
         }
         return newArray;
       }
     let chartData = createPieChartData(this.props.expenses)
-    console.log('expense number', chartData);
+    console.log('chartData', chartData);
 
     let pieData =
         chartData.map((value, index) => ({
         value,
-        color: randomColor(),
+        color: colorList[index],
         key: `pie-${index}`,
         onPress: () => console.log(`${index} slice pressed`),
         }))
