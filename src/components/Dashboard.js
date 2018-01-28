@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
-import { ProgressCircle } from 'react-native-svg-charts'
+import { ProgressCircle, PieChart } from 'react-native-svg-charts'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
@@ -64,22 +64,44 @@ class Dashboard extends Component {
 
     let expenseModal = this.state.showExpenseModal? <AddExpense  closeExpenseModal={this.closeExpenseModal}/>:<Text></Text>;
 
+
+
+
+    let randomColor = () => ('#' + (Math.random() * 0xFFFFFF << 0).toString(16) + '000000').slice(0, 7)
+
+    let createPieChartData = (arr) => {
+        let newArray=[];
+        for(let i = 0; i < arr.length; i++ ){
+          newArray.push(6000/parseInt(arr[i].expense_budget));
+        }
+        return newArray;
+      }
+    let chartData = createPieChartData(this.props.expenses)
+    console.log('expense number', chartData);
+
+    let pieData =
+        chartData.map((value, index) => ({
+        value,
+        color: randomColor(),
+        key: `pie-${index}`,
+        onPress: () => console.log(`${index} slice pressed`),
+        }))
+
+
+
     return (
 
       <ScrollView>
 
         <Card >
-         <View style={{ backgroundColor: '#fff', padding: 20, }}>
-          <ProgressCircle
+          <View style={{ backgroundColor: '#fff', padding: 20, }}>
+            <PieChart
+                  style={ { height: 200 } }
+                  data={ pieData }
+              />
+          </View>
 
-                style={ { height: 200 } }
-                progress={ 0.7 }
-                progressColor={ 'rgb(81, 173, 2)' }
-                startAngle={ -Math.PI * 0.8 }
-                endAngle={ Math.PI * 0.8 }
-            />
-         </View>
-         
+
          <CardSection style={{ justifyContent: 'center'}}>
            <CardSection >
               <Text style={{ fontSize: 14}}>Budget: </Text>
