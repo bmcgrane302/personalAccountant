@@ -23,10 +23,10 @@ class BudgetChart extends Component {
     })
 
     let budgetTotal = this.props.expenses.reduce((acc,item)=> acc + Number(item.expense_budget),0)
-    console.log('budgetTotal', budgetTotal);
+
 
     let budgetTotalSpent = this.props.expenses.reduce((acc,item)=> acc + Number(item.expense_amount_paid),0)
-    console.log('budgetTotalSpent', budgetTotalSpent);
+
 
 
 
@@ -38,14 +38,14 @@ class BudgetChart extends Component {
         return newArray;
       }
     let chartData = createPieChartData(this.props.expenses)
-    console.log('chartData', chartData);
+   
 
     let pieData =
         chartData.map((value, index) => ({
         value,
         color: this.colorList[index],
         key: `pie-${index}`,
-        onPress: () => console.log('its working chart componet'),
+        onPress: () => console.log(`${index} slice pressed`),
         }))
 
     return (
@@ -62,10 +62,7 @@ class BudgetChart extends Component {
 
 
          <CardSection style={{ justifyContent: 'center'}}>
-           <CardSection >
-              <Text style={{ fontSize: 12}}>Budget: </Text>
-              <Text style={{ fontSize: 12}}>$</Text>
-           </CardSection>
+
          </CardSection>
          {expenseList}
         </Card>
