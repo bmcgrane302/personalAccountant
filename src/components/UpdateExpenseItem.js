@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Scene, Router, Actions } from 'react-native-router-flux';
 import { ProgressCircle } from 'react-native-svg-charts'
 import { bindActionCreators } from 'redux';
 import { updateExpense, deleteExpense } from '../actions/AuthActions';
@@ -25,6 +26,7 @@ class UpdateExpenseItem extends Component {
    handleDelete = () => {
      //console.log('delete', this.props.id);
      this.props.deleteExpense(this.props.id)
+     Actions.dash()
     }
 
 

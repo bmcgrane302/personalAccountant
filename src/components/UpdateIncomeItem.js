@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Scene, Router, Actions } from 'react-native-router-flux';
 import { ProgressCircle } from 'react-native-svg-charts'
 import { bindActionCreators } from 'redux';
 import { updateIncome, deleteIncome} from '../actions/AuthActions';
@@ -10,7 +11,8 @@ class UpdateIncomeItem extends Component {
   state = {
     income_amount_received: 0,
     currentBudgetPer: 0,
-    currentSpent: this.props.current
+    currentSpent: this.props.current,
+    placeHolder: '$100.00'
   }
 
   handleSubmit = () => {
@@ -18,11 +20,13 @@ class UpdateIncomeItem extends Component {
 
     this.setState({ currentSpent: total.toFixed(2) })
     this.props.updateIncome(total, this.props.id )
+    this.setState({ placeHolder: '$100.00' })
    }
 
    handleDelete = () => {
      //console.log('delete', this.props.id);
      this.props.deleteIncome(this.props.id)
+     Actions.dash()
     }
 
   render () {
@@ -71,7 +75,7 @@ class UpdateIncomeItem extends Component {
           <CardSection>
             <Input
               label="Amount"
-              placeholder="100.00"
+              placeholder={this.state.placeHolder}
               onChangeText={(income_amount_received) => this.setState({income_amount_received})}
               value={this.props.income_amount_received}
             />
