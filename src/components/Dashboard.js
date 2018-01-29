@@ -70,6 +70,8 @@ class Dashboard extends Component {
     let budgetTotalSpent = this.props.expenses.reduce((acc,item)=> acc + Number(item.expense_amount_paid),0)
     console.log('budgetTotalSpent', budgetTotalSpent);
 
+    let remainingDisplayColor = ((budgetTotal-budgetTotalSpent) < 1) ? "red" : 'rgb(81, 173, 2)';
+
     let colorList = ['#00ff01', '#0c2ff4', '#020911', '#e03b2c', '#ff00fa', '#19eadc', '#ed8312', '#10f2b6', '#10f2b6', '#8079ce', '#f2467e', '#1b5907']
 
     let randomColor = () => ('#' + (Math.random() * 0xFFFFFF << 0).toString(16) + '000000').slice(0, 7)
@@ -89,7 +91,7 @@ class Dashboard extends Component {
         value,
         color: colorList[index],
         key: `pie-${index}`,
-        onPress: () => console.log(`${index} slice pressed`),
+        onPress: () => Actions.budgetChart(),
         }))
 
 
@@ -110,7 +112,7 @@ class Dashboard extends Component {
          <CardSection style={{ justifyContent: 'center'}}>
            <CardSection >
               <Text style={{ fontSize: 12}}>Budget: </Text>
-              <Text style={{ fontSize: 12, color: 'red'}}>${budgetTotal.toFixed(2)}</Text>
+              <Text style={{ fontSize: 12}}>${budgetTotal.toFixed(2)}</Text>
            </CardSection>
            <CardSection >
               <Text style={{ fontSize: 12}}>Spent: </Text>
@@ -118,7 +120,7 @@ class Dashboard extends Component {
            </CardSection>
            <CardSection >
               <Text style={{ fontSize: 12}}>Remaining: </Text>
-              <Text style={{ fontSize: 12, color: 'red'}}>${(budgetTotal-budgetTotalSpent).toFixed(2)}</Text>
+              <Text style={{ fontSize: 12, color: remainingDisplayColor}}>${(budgetTotal-budgetTotalSpent).toFixed(2)}</Text>
            </CardSection>
          </CardSection>
         </Card>
