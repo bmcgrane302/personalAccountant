@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
-import { ProgressCircle, PieChart } from 'react-native-svg-charts'
+import { ProgressCircle, PieChart } from 'react-native-svg-charts';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
@@ -74,7 +74,6 @@ class Dashboard extends Component {
 
     let colorList = ['#00ff01', '#0c2ff4', '#020911', '#e03b2c', '#ff00fa', '#19eadc', '#ed8312', '#10f2b6', '#10f2b6', '#8079ce', '#f2467e', '#1b5907']
 
-    let randomColor = () => ('#' + (Math.random() * 0xFFFFFF << 0).toString(16) + '000000').slice(0, 7)
 
     let createPieChartData = (arr) => {
         let newArray=[];
