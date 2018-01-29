@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ProgressCircle } from 'react-native-svg-charts'
 import { bindActionCreators } from 'redux';
-import { updateExpense} from '../actions/AuthActions';
+import { updateExpense, deleteExpense } from '../actions/AuthActions';
 import { Text, View, ScrollView, TouchableOpacity, Modal, Button } from 'react-native';
 import { Card, CardSection, Input } from './common';
 
@@ -21,6 +21,11 @@ class UpdateExpenseItem extends Component {
     this.props.updateExpense(total, this.props.id )
 
    }
+
+   handleDelete = () => {
+     //console.log('delete', this.props.id);
+     this.props.deleteExpense(this.props.id)
+    }
 
 
   render () {
@@ -83,6 +88,13 @@ class UpdateExpenseItem extends Component {
                  </Text>
               </TouchableOpacity>
             </CardSection>
+            <CardSection>
+              <TouchableOpacity onPress={this.handleDelete}>
+                <Text style={{fontSize:10}}>
+                     DELETE
+                 </Text>
+              </TouchableOpacity>
+            </CardSection>
           </CardSection>
         </Card>
       </View>
@@ -120,6 +132,7 @@ function mapDispatchToProps(dispatch) {
     return {
 
       updateExpense: bindActionCreators(updateExpense, dispatch),
+      deleteExpense: bindActionCreators(deleteExpense, dispatch)
     }
   }
 

@@ -4,7 +4,9 @@ import {
   ADD_EXPENSE_PENDING,
   ADD_EXPENSE_SUCCESS,
   UPDATE_EXPENSE_PENDING,
-  UPDATE_EXPENSE_SUCCESS
+  UPDATE_EXPENSE_SUCCESS,
+  DELETE_EXPENSE_PENDING,
+  DELETE_EXPENSE_SUCCESS
 } from '../actions/AuthActions';
 
 
@@ -27,6 +29,10 @@ export default (state = [], action) => {
     case UPDATE_EXPENSE_SUCCESS:
     //console.log('expense updating',action.payload);
       return [...action.payload.data];
+    case DELETE_EXPENSE_PENDING:
+      return state;
+    case DELETE_EXPENSE_SUCCESS:
+        return [...action.payload.data];
     default:
      return state;
 

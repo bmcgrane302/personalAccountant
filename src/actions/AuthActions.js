@@ -21,6 +21,8 @@ export const UPDATE_INCOME_PENDING = 'UPDATE_INCOME_PENDING'
 export const UPDATE_INCOME_SUCCESS = 'UPDATE_INCOME_SUCCESS'
 export const DELETE_INCOME_PENDING = 'DELETE_INCOME_PENDING'
 export const DELETE_INCOME_SUCCESS = 'DELETE_INCOME_SUCCESS'
+export const DELETE_EXPENSE_PENDING = 'DELETE_EXPENSE_PENDING'
+export const DELETE_EXPENSE_SUCCESS = 'DELETE_EXPENSE_SUCCESS'
 
 
 
@@ -160,6 +162,22 @@ export const deleteIncome = (id) => {
       dispatch({
         type: DELETE_INCOME_SUCCESS,
         payload: resultingIncome
+      })
+
+    }
+}
+
+export const deleteExpense = (id) => {
+  console.log('deleteExpense', id);
+  return async (dispatch) => {
+      dispatch({type: DELETE_EXPENSE_PENDING})
+        let token = await AsyncStorage.getItem('personalAccountantToken')
+        console.log(token);
+
+        let resultingExpense = await axios.delete(`http://localhost:8000/deleteexpense/${id}?token=${token}`)
+      dispatch({
+        type: DELETE_EXPENSE_SUCCESS,
+        payload: resultingExpense
       })
 
     }
