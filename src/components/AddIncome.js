@@ -25,7 +25,7 @@ class AddIncome extends Component {
     return (
       <Modal
         transparent
-        animationType="slide"
+        animationType="none"
         onRequestClose={() => {}}
       >
         <View style={styles.containerStyle}>

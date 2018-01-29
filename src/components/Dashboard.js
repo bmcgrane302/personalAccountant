@@ -64,11 +64,15 @@ class Dashboard extends Component {
 
     let expenseModal = this.state.showExpenseModal? <AddExpense  closeExpenseModal={this.closeExpenseModal}/>:<Text></Text>;
 
+    let incomeTotal = this.props.income.reduce((acc,item)=> acc + Number(item.income_budget),0)
+
+    let incomeReceived = this.props.income.reduce((acc,item)=> acc + Number(item.income_amount_received),0)
+
     let budgetTotal = this.props.expenses.reduce((acc,item)=> acc + Number(item.expense_budget),0)
-    console.log('budgetTotal', budgetTotal);
+
 
     let budgetTotalSpent = this.props.expenses.reduce((acc,item)=> acc + Number(item.expense_amount_paid),0)
-    console.log('budgetTotalSpent', budgetTotalSpent);
+
 
     let remainingDisplayColor = ((budgetTotal-budgetTotalSpent) < 1) ? "red" : 'rgb(81, 173, 2)';
 
@@ -122,19 +126,21 @@ class Dashboard extends Component {
               <Text style={{ fontSize: 12, color: remainingDisplayColor}}>${(budgetTotal-budgetTotalSpent).toFixed(2)}</Text>
            </CardSection>
          </CardSection>
+
         </Card>
-
-
 
 
         <Card>
           <CardSection>
-            <Text style={{color: 'green'}}>INCOME</Text>
+            <CardSection style={{ borderBottomWidth: 0 }}>
+              <Text style={{color: 'green', width: 150}}>INCOME</Text>
+              <Text style={{width: 100}}>PROJECTED</Text>
+              <Text style={{width: 100}}>RECEIVED</Text>
+            </CardSection>
           </CardSection>
-
            {incomeList}
           <CardSection>
-            <TouchableOpacity onPress={this.addIncomeButton}             style={styles.buttonStyle}>
+            <TouchableOpacity onPress={this.addIncomeButton}   style={styles.buttonStyle}>
               <Text style={styles.textStyle}>
                    ADD INCOME
                </Text>
@@ -146,7 +152,11 @@ class Dashboard extends Component {
 
         <Card>
           <CardSection>
-            <Text style={{color: 'red'}}>EXPENSES</Text>
+            <CardSection style={{ borderBottomWidth: 0 }}>
+              <Text style={{color: 'red', width: 150}}>EXPENSES</Text>
+                <Text style={{width: 100}}>BUDGETED</Text>
+                <Text style={{width: 100}}>PAID</Text>
+            </CardSection>
           </CardSection>
            {expenseList}
            <CardSection>
