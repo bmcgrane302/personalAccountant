@@ -11,7 +11,8 @@ import { Card, CardSection, Input } from './common';
 class AddExpense extends Component {
   state = {
     expense_description: '',
-    expense_budget: ''
+    expense_budget: '',
+    expense_amount_paid: '0'
   }
 
   handleSubmit = () => {
@@ -54,6 +55,16 @@ class AddExpense extends Component {
                 placeholder="1000.00"
                 onChangeText={(expense_budget) => this.setState({expense_budget})}
                 value={this.props.expense_budget}
+
+              />
+            </CardSection>
+
+            <CardSection >
+              <Input
+                label="Paid"
+                placeholder="1000.00--optional"
+                onChangeText={(expense_amount_paid) => this.setState({expense_amount_paid})}
+                value={this.props.expense_amount_paid}
 
               />
             </CardSection>
