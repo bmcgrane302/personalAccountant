@@ -12,6 +12,7 @@ class UpdateExpenseItem extends Component {
     expense_amount_paid: 0,
     currentBudgetPer: 0,
     currentSpent: this.props.current
+
   }
 
 
@@ -77,7 +78,7 @@ class UpdateExpenseItem extends Component {
           <CardSection>
             <Input
               label="Amount"
-              placeholder="100.00"
+              placeholder= '100.00'
               onChangeText={(expense_amount_paid) => this.setState({expense_amount_paid})}
               value={this.props.expense_amount_paid}
             />
