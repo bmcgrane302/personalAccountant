@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addUser } from '../actions/AuthActions';
 import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { Card, CardSection, Input, Button } from './common';
 
@@ -11,7 +14,10 @@ class Register extends Component {
   }
 
   handleSubmit = () => {
-
+     this.props.addUser({
+       username: this.state.username.toLowerCase(),
+       password: this.state.password
+     })
      console.log('registration working', this.state);
    }
 
@@ -61,4 +67,12 @@ class Register extends Component {
   }
 }
 
-export default Register;
+
+function mapDispatchToProps(dispatch) {
+    return {
+
+      addUser: bindActionCreators(addUser, dispatch)
+    }
+  }
+
+export default connect(null, mapDispatchToProps) (Register);

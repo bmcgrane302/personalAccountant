@@ -23,6 +23,8 @@ export const DELETE_INCOME_PENDING = 'DELETE_INCOME_PENDING'
 export const DELETE_INCOME_SUCCESS = 'DELETE_INCOME_SUCCESS'
 export const DELETE_EXPENSE_PENDING = 'DELETE_EXPENSE_PENDING'
 export const DELETE_EXPENSE_SUCCESS = 'DELETE_EXPENSE_SUCCESS'
+export const ADD_USER_PENDING = 'ADD_USER_PENDING'
+export const ADD_USER_SUCCESS = 'ADD_USER_SUCCESS'
 
 
 
@@ -56,6 +58,19 @@ export const loginUser = ({email, password}) => {
 
      };
   };
+
+  export const addUser = (addUser) => {
+    console.log('addUser',addUser);
+    return async (dispatch) => {
+        dispatch({type: ADD_USER_PENDING})
+          let user = await axios.post(`http://localhost:8000/adduser`,{'addUser': addUser})
+        dispatch({
+          type: ADD_USER_SUCCESS,
+          payload: user
+        })
+        Actions.auth();
+      }
+  }
 
 
 

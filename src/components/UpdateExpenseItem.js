@@ -27,7 +27,7 @@ class UpdateExpenseItem extends Component {
    handleDelete = () => {
      //console.log('delete', this.props.id);
      this.props.deleteExpense(this.props.id)
-     Actions.dash()
+     Actions.main()
     }
 
 

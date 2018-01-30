@@ -26,7 +26,7 @@ class UpdateIncomeItem extends Component {
    handleDelete = () => {
      //console.log('delete', this.props.id);
      this.props.deleteIncome(this.props.id)
-     Actions.dash()
+     Actions.main()
     }
 
   render () {

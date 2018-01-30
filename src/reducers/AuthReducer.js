@@ -4,7 +4,9 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
   LOGIN_USER,
-  
+  ADD_USER_PENDING,
+  ADD_USER_SUCCESS
+
 } from '../actions/AuthActions';
 
 const INITIAL_STATE = {
@@ -38,6 +40,10 @@ export default (state = INITIAL_STATE, action) => {
        };
     case LOGIN_USER_FAIL:
       return { ...state, error: 'Authenication Failed', password: '', loading: false};
+    case ADD_USER_PENDING:
+      return state;
+    case ADD_USER_SUCCESS:
+          return [...action.payload.data];
 
     default:
      return state;
