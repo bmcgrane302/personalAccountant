@@ -22,7 +22,7 @@ class Register extends Component {
    }
 
   render () {
-    let renderButton = (this.state.password === this.state.checkPassword) ? <CardSection>
+    let renderButton = (this.state.password === this.state.checkPassword) ? <CardSection style={{borderColor: '#fff'}}>
       <Button
          onPress={this.handleSubmit}>
          Register
@@ -30,8 +30,9 @@ class Register extends Component {
     </CardSection> : <Text></Text>;
 
     return (
-      <Card>
-        <CardSection>
+    <View style={{ backgroundColor: '#fff', flex: 3, paddingTop: 50, paddingLeft: 5, paddingRight: 5 }}>
+
+        <CardSection style={{borderColor: '#000'}}>
           <Input
             label="Email"
             placeholder="email@gmail.com"
@@ -40,7 +41,7 @@ class Register extends Component {
           />
         </CardSection>
 
-        <CardSection>
+        <CardSection style={{borderColor: '#000'}}>
           <Input
             secureTextEntry
             label="Password"
@@ -50,7 +51,7 @@ class Register extends Component {
           />
         </CardSection>
 
-        <CardSection>
+        <CardSection style={{borderColor: '#000'}}>
           <Input
             secureTextEntry
             label="Verify"
@@ -62,7 +63,8 @@ class Register extends Component {
 
        {renderButton}
 
-      </Card>
+
+    </View>
     )
   }
 }

@@ -29,10 +29,10 @@ const styles = {
     alignSelf: 'center',
     backgroundColor: '#fff',
     borderRadius: 5,
-    borderWidth: 0,
+    borderWidth: 1,
     borderColor: '#007aff',
-    marginLeft: 5,
-    marginRight: 5
+    marginLeft: 120,
+    marginRight: 120
   }
 }
 

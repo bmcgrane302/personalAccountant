@@ -6,7 +6,7 @@ import {
   passwordChanged,
   loginUser
  } from '../actions/AuthActions';
-import { Text, Modal } from 'react-native';
+import { Text, Modal, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Card, CardSection, Input, Button, Spinner, Confirm } from './common';
 
@@ -52,43 +52,37 @@ class LoginForm extends Component {
   render() {
     console.log('props', this.props);
     return (
-      <Card>
-        <CardSection>
-          <Input
-            label="Email"
-            placeholder="email@gmail.com"
-            onChangeText={this.onEmailChange.bind(this)}
-            value={this.props.email}
-          />
-        </CardSection>
+      <View style={{ backgroundColor: '#fff', flex: 3, paddingTop: 50, paddingLeft: 5, paddingRight: 5 }}>
 
-        <CardSection>
-          <Input
-            secureTextEntry
-            label="Password"
-            placeholder="password"
-            onChangeText={this.onPasswordChange.bind(this)}
-            value={this.props.password}
-          />
-        </CardSection>
+          <CardSection style={{borderColor: '#000'}}>
+            <Input
+              label="Email"
+              placeholder="email@gmail.com"
+              onChangeText={this.onEmailChange.bind(this)}
+              value={this.props.email}
+            />
+          </CardSection>
 
-        <Text style={styles.errorTextStyle}>
-          {this.props.error}
-        </Text>
+          <CardSection style={{borderColor: '#fff'}}>
+            <Input
+              secureTextEntry
+              label="Password"
+              placeholder="password"
+              onChangeText={this.onPasswordChange.bind(this)}
+              value={this.props.password}
+            />
+          </CardSection>
 
-        <CardSection >
-          {this.renderButton()}
-        </CardSection>
+          <CardSection style={{borderColor: '#fff'}}>
+            {this.renderButton()}
+          </CardSection>
+          <CardSection style={{borderColor: '#fff'}}>
+            <Button onPress={this.onRegisterPress}>
+               Register
+            </Button>
+          </CardSection>
 
-        <CardSection>
-          <Button onPress={this.onRegisterPress}>
-             Register
-          </Button>
-        </CardSection>
-
-
-
-      </Card>
+      </View>
     );
   }
 }
