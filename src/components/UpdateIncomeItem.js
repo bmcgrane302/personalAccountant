@@ -41,7 +41,7 @@ class UpdateIncomeItem extends Component {
         <Card>
           <CardSection style={{ justifyContent: 'center'}}>
             <CardSection >
-               <Text style={{ fontSize: 20, color: '#007aff'}}>{this.props.description.toUpperCase()}</Text>
+               <Text style={{ fontSize: 20, color: 'rgb(81, 173, 2)'}}>{this.props.description.toUpperCase()}</Text>
             </CardSection>
           </CardSection>
         </Card>

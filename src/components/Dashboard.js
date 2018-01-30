@@ -140,7 +140,7 @@ class Dashboard extends Component {
           </CardSection>
            {incomeList}
           <CardSection>
-            <TouchableOpacity onPress={this.addIncomeButton}   style={styles.buttonStyle}>
+            <TouchableOpacity onPress={this.addIncomeButton}    style={styles.buttonStyle}>
               <Text style={styles.textStyle}>
                    ADD INCOME
                </Text>

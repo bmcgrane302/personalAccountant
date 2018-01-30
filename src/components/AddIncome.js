@@ -11,7 +11,8 @@ import { Card, CardSection, Input } from './common';
 class AddIncome extends Component {
   state = {
     income_description: '',
-    income_budget: ''
+    income_budget: '',
+    income_amount_received: '0'
   }
 
   handleSubmit = () => {
@@ -39,7 +40,7 @@ class AddIncome extends Component {
             <CardSection>
               <Input
                 label="Description"
-                placeholder="bill"
+                placeholder="Bill"
                 onChangeText={(income_description) => this.setState({income_description})}
                 value={this.props.income_description}
               />
@@ -51,6 +52,16 @@ class AddIncome extends Component {
                 placeholder="1000.00"
                 onChangeText={(income_budget) => this.setState({income_budget})}
                 value={this.props.income_budget}
+
+              />
+            </CardSection>
+
+            <CardSection>
+              <Input
+                label="Received"
+                placeholder="100.00--optional"
+                onChangeText={(income_amount_received) => this.setState({income_amount_received})}
+                value={this.props.income_amount_received}
 
               />
             </CardSection>

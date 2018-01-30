@@ -29,7 +29,7 @@ const styles = {
     alignSelf: 'center',
     backgroundColor: '#fff',
     borderRadius: 5,
-    borderWidth: 1,
+    borderWidth: 0,
     borderColor: '#007aff',
     marginLeft: 5,
     marginRight: 5
