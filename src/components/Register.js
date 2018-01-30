@@ -2,18 +2,26 @@ import React, { Component } from 'react';
 import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { Card, CardSection, Input, Button } from './common';
 
+
 class Register extends Component {
   state = {
     username: '',
-    password: ''
+    password: '',
+    checkPassword: 'z@76t6g82efv'
   }
 
   handleSubmit = () => {
-     console.log('registration working', this.state);
 
+     console.log('registration working', this.state);
    }
 
   render () {
+    let renderButton = (this.state.password === this.state.checkPassword) ? <CardSection>
+      <Button
+         onPress={this.handleSubmit}>
+         Register
+      </Button>
+    </CardSection> : <Text></Text>;
 
     return (
       <Card>
@@ -36,15 +44,17 @@ class Register extends Component {
           />
         </CardSection>
 
-
-
         <CardSection>
-          <Button onPress={this.handleSubmit}>
-             Register
-          </Button>
+          <Input
+            secureTextEntry
+            label="Verify"
+            placeholder=" verify password"
+            onChangeText={(checkPassword) => this.setState({checkPassword})}
+            value={this.props.checkPassword}
+          />
         </CardSection>
 
-
+       {renderButton}
 
       </Card>
     )
