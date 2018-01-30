@@ -6,6 +6,7 @@ import AddExpense from './components/AddExpense';
 import UpdateExpenseItem from './components/UpdateExpenseItem';
 import UpdateIncomeItem from './components/UpdateIncomeItem';
 import BudgetChart from './components/BudgetChart';
+import Register from './components/Register';
 
 
 const RouterComponent = () => {
@@ -15,6 +16,7 @@ const RouterComponent = () => {
       <Scene key='root' hideNavBar>
         <Scene key='auth' >
           <Scene key='login' component={LoginForm}  title='Please Login' initial  />
+          <Scene key='register' component={Register} title='Register'  />
         </Scene>
 
         <Scene key='main'>

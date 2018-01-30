@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { Actions } from 'react-native-router-flux';
+import { Scene, Router, Actions } from 'react-native-router-flux';
 import {
   emailChanged,
   passwordChanged,
@@ -44,6 +44,10 @@ class LoginForm extends Component {
     );
   }
 
+  onRegisterPress = () => {
+    Actions.register()
+  }
+
 
   render() {
     console.log('props', this.props);
@@ -74,6 +78,12 @@ class LoginForm extends Component {
 
         <CardSection>
           {this.renderButton()}
+        </CardSection>
+
+        <CardSection>
+          <Button onPress={this.onRegisterPress}>
+             Register
+          </Button>
         </CardSection>
 
 
