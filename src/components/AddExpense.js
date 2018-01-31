@@ -70,16 +70,18 @@ class AddExpense extends Component {
             </CardSection>
 
             <CardSection>
-              <CardSection>
-                <TouchableOpacity onPress={this.handleSubmit}>
-                  <Text style={{color: '#007aff',  fontSize:10}}>
+              <CardSection style={{ borderBottomWidth: 0 }}>
+                <TouchableOpacity onPress={this.handleSubmit}
+                  style={styles.buttonStyle}>
+                  <Text style={{color: '#007aff',  fontSize:12, padding: 5}}>
                        ADD
                    </Text>
                 </TouchableOpacity>
               </CardSection>
-              <CardSection>
-                <TouchableOpacity onPress={this.props.closeExpenseModal}>
-                  <Text style={{fontSize:10}}>
+              <CardSection style={{ borderBottomWidth: 0 }}>
+                <TouchableOpacity onPress={this.props.closeExpenseModal}
+                  style={styles.deletButtonStyle}>
+                  <Text style={{fontSize:12, padding: 5}}>
                        CLOSE
                    </Text>
                 </TouchableOpacity>
@@ -109,6 +111,30 @@ const styles = {
     flex: 1,
     justifyContent: 'center'
   },
+  buttonStyle: {
+
+    alignSelf: 'center',
+    backgroundColor: '#fff',
+    marginLeft: 4,
+    marginRight: 4,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: '#007aff',
+    paddingLeft:8,
+    paddingRight: 8
+  },
+  deletButtonStyle: {
+
+    alignSelf: 'center',
+    backgroundColor: '#fff',
+    marginLeft: 4,
+    marginRight: 4,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: '#000',
+    paddingLeft:8,
+    paddingRight: 8
+  }
 
 };
 

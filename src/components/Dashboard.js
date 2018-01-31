@@ -139,10 +139,10 @@ class Dashboard extends Component {
             </CardSection>
           </CardSection>
            {incomeList}
-          <CardSection>
+          <CardSection >
             <TouchableOpacity onPress={this.addIncomeButton}    style={styles.buttonStyle}>
               <Text style={styles.textStyle}>
-                   ADD INCOME
+                   ADD
                </Text>
             </TouchableOpacity>
           </CardSection>
@@ -162,7 +162,7 @@ class Dashboard extends Component {
            <CardSection>
              <TouchableOpacity onPress={this.addExpenseButton} style={styles.buttonStyle}>
                 <Text style={styles.textStyle}>
-                    ADD EXPENSE
+                    ADD
                 </Text>
              </TouchableOpacity>
            </CardSection>
@@ -177,10 +177,13 @@ const styles = {
   textStyle: {
     alignSelf: 'center',
     color: '#007aff',
-    fontSize: 10,
+    fontSize: 12,
     fontWeight: '600',
-    paddingTop: 10,
-    paddingBottom: 10
+    paddingTop: 5,
+    paddingBottom: 5,
+    paddingLeft: 8,
+    paddingRight: 8
+
 
   },
   buttonStyle: {
@@ -188,7 +191,12 @@ const styles = {
     alignSelf: 'center',
     backgroundColor: '#fff',
     marginLeft: 4,
-    marginRight: 4
+    marginRight: 4,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: '#007aff',
+    paddingLeft:8,
+    paddingRight: 8
   }
 }
 
