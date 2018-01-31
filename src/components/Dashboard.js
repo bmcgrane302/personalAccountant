@@ -103,11 +103,11 @@ class Dashboard extends Component {
 
       <ScrollView>
 
-        <Card >
+        <Card  >
           <View style={{ backgroundColor: '#fff', padding: 20, }}>
             <PieChart
                   style={ { height: 200 } }
-                  data={ pieData }
+                  data={ pieData }              
               />
           </View>
 
