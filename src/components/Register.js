@@ -27,7 +27,11 @@ class Register extends Component {
          onPress={this.handleSubmit}>
          Register
       </Button>
-    </CardSection> : <Text></Text>;
+    </CardSection> : <CardSection style={{borderColor: '#fff'}}>
+      <Button>
+         Register
+      </Button>
+    </CardSection>;
 
     return (
     <View style={{ backgroundColor: '#fff', flex: 3, paddingTop: 50, paddingLeft: 5, paddingRight: 5 }}>
