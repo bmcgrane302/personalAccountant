@@ -61,11 +61,11 @@ class UpdateIncomeItem extends Component {
          </View>
          <CardSection style={{ justifyContent: 'center'}}>
            <CardSection >
-              <Text style={{ fontSize: 14}}>Budget: {this.props.budget}</Text>
+              <Text style={{ fontSize: 14}}>Budget: ${this.props.budget}</Text>
            </CardSection>
            <CardSection >
               <Text style={{ fontSize: 14}}>Current: </Text>
-              <Text style={{ fontSize: 14, color: 'rgb(81, 173, 2)'}}>{this.state.currentSpent}</Text>
+              <Text style={{ fontSize: 14, color: 'rgb(81, 173, 2)'}}>${this.state.currentSpent}</Text>
            </CardSection>
          </CardSection>
         </Card>

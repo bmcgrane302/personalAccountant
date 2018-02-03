@@ -11,7 +11,7 @@ import ChartItem from './ChartItem';
 
 class BudgetChart extends Component {
 
-  colorList = ['#00ff01', '#0c2ff4', '#020911', '#e03b2c', '#ff00fa', '#19eadc', '#ed8312', '#10f2b6', '#10f2b6', '#8079ce', '#f2467e', '#1b5907']
+  colorList = ['#00ff01', '#0c2ff4', '#020911', '#e03b2c', '#ff00fa', '#19eadc', '#ed8312', '#10f2b6','#8079ce', '#f2467e', '#1b5907', '#10f2b6' ]
 
   render () {
 
@@ -38,7 +38,7 @@ class BudgetChart extends Component {
         return newArray;
       }
     let chartData = createPieChartData(this.props.expenses)
-   
+
 
     let pieData =
         chartData.map((value, index) => ({
