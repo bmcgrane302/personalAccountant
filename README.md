@@ -1,1 +1,11 @@
 # personalAccountant
+
+## Technology
+  * React-Native
+  * Redux
+  * Node JS
+  * Knex
+  * PosgreSQL
+  * CSS
+
+## PERSONAL ACCOUNTANT IS A MOBILE BUDGETING APPLICATION THAT ALLOWS USERS TO HAVE REALTIME ACCESS TO THEIR INCOME AND EXPENDITURES.
